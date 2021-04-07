@@ -1,12 +1,26 @@
 <?php
-use Slim\Psr7\Response;
+use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
-use Slim\Factory\AppFactory;
+use DI\Bridge\Slim\Bridge;
+use DI\ContainerBuilder;
+use Twig\Environment as Twig;
+use Twig\Loader\FilesystemLoader;
+use App\Controllers\HomeController;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$app = AppFactory::create();
+$builder = new ContainerBuilder();
+$builder->addDefinitions([
+    Twig::class => function () {
+        $loader = new FilesystemLoader(__DIR__ . '/../templates');
+        return new Twig($loader, [
+            'cache' => __DIR__ . '/../tmp/cache/twig',
+        ]);
+    },
+]);
+
+$app = Bridge::create($builder->build());
 
 /*
 $app->get('/', function (Request $request, Response $response, $args) {
@@ -32,9 +46,6 @@ $app->add(function (Request $request, RequestHandler $handler) {
     return $response;
 });*/
 
-$app->get('/', function (Request $request, Response $response, $args) {
-    $response->getBody()->write('Hello World');
-    return $response;
-});
+$app->get('/', [HomeController::class, 'index']);
 
 $app->run();
