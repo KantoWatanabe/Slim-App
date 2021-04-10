@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Twig\Environment as Twig;
 
 class HomeController
@@ -13,7 +14,7 @@ class HomeController
         $this->twig = $twig;
     }
 
-    public function index(Response $response): Response
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $response = $response->withHeader('Content-Type', 'text/html');
         $body = $this->twig->render('index.html.twig');
