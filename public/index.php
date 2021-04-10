@@ -6,7 +6,6 @@ use DI\Bridge\Slim\Bridge;
 use DI\ContainerBuilder;
 use Twig\Environment as Twig;
 use Twig\Loader\FilesystemLoader;
-use App\Controllers\HomeController;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -46,6 +45,7 @@ $app->add(function (Request $request, RequestHandler $handler) {
     return $response;
 });*/
 
-$app->get('/', [HomeController::class, 'index']);
+$routes = require __DIR__ . '/../routes/web.php';
+$routes($app);
 
 $app->run();
