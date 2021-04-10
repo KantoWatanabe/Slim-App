@@ -1,11 +1,11 @@
 <?php
-namespace App\Controllers;
+namespace App\Actions;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Twig\Environment as Twig;
 
-class HomeController
+class HomeAction
 {
     private Twig $twig;
 

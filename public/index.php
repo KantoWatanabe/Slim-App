@@ -47,7 +47,7 @@ $app->add(function (Request $request, RequestHandler $handler) {
     return $response;
 });*/
 
-$routes = require __DIR__ . '/../routes/web.php';
+$routes = require __DIR__ . '/../config/routes.php';
 $routes($app);
 
 $app->run();
