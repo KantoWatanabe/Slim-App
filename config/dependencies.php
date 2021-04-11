@@ -1,12 +1,17 @@
 <?php
+use Psr\Container\ContainerInterface;
 use Twig\Environment as Twig;
 use Twig\Loader\FilesystemLoader;
 
 return [
-    'view' => function () {
-        $loader = new FilesystemLoader(__DIR__ . '/../templates');
+    'view' => function (ContainerInterface $container) {
+        $settings = $container->get('settings');
+
+        $viewSettings = $settings['view'];
+        $loader = new FilesystemLoader($viewSettings['path']);
+
         return new Twig($loader, [
-            'cache' => __DIR__ . '/../tmp/cache/twig',
+            'cache' => $viewSettings['cache'],
         ]);
     },
 ];
