@@ -1,4 +1,5 @@
 <?php
+use Monolog\Logger;
 
 $settings = [
     'settings' => [
@@ -6,6 +7,11 @@ $settings = [
             'path' => __DIR__ . '/../templates',
             'cache' => __DIR__ . '/../tmp/cache/twig',
         ],
+        'logger' => [
+            'name' => 'app',
+            'path' => __DIR__ . '/../tmp/logs/app.log',
+            'level' => Logger::DEBUG,
+        ]
     ]
 ];
 
