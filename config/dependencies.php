@@ -2,7 +2,7 @@
 use Psr\Container\ContainerInterface;
 use Twig\Environment as Twig;
 use Twig\Loader\FilesystemLoader;
-use Monolog\Handler\StreamHandler;
+use Monolog\Handler\RotatingFileHandler;
 use Monolog\Logger;
 use Monolog\Processor\UidProcessor;
 
@@ -26,7 +26,7 @@ return [
         $processor = new UidProcessor();
         $logger->pushProcessor($processor);
 
-        $handler = new StreamHandler($loggerSettings['path'], $loggerSettings['level']);
+        $handler = new RotatingFileHandler($loggerSettings['path'], $loggerSettings['level']);
         $logger->pushHandler($handler);
 
         return $logger;
