@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+<?php
+use DI\ContainerBuilder;
+use Symfony\Component\Console\Application;
+
+require __DIR__ . '/../vendor/autoload.php';
+
+$builder = new ContainerBuilder();
+$builder->addDefinitions(require __DIR__ . '/../config/settings.php');
+$builder->addDefinitions(require __DIR__ . '/../config/dependencies.php');
+
+$container = $builder->build();
+$app = $container->get(Application::class);
+
+$commands = require __DIR__ . '/../config/commands.php';
+$commands($app, $container);
+
+$app->run();
