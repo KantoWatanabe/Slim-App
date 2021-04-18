@@ -3,5 +3,5 @@
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-$settings['environment'] = 'example';
-$settings['debug'] = true;
+$settings['settings']['environment'] = 'example';
+$settings['settings']['debug'] = true;
