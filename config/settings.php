@@ -19,7 +19,7 @@ $settings = [
             'path' => __DIR__ . '/../tmp/logs/app.log',
             'level' => Logger::DEBUG,
         ],
-        'database' => [
+        'db' => [
             'dsn' => 'mysql:host=127.0.0.1;port=3306;dbname=example;charset=utf8',
             'username' => 'example',
             'passwd' => 'example',

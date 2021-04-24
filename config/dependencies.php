@@ -31,14 +31,14 @@ return [
 
         return $logger;
     },
-    'database' => function (ContainerInterface $container) {
+    'db' => function (ContainerInterface $container) {
         $settings = $container->get('settings');
 
-        $databaseSettings = $settings['database'];
-        $dsn = $databaseSettings['dsn'];
-        $username = $databaseSettings['username'];
-        $passwd = $databaseSettings['passwd'];
-        $options = $databaseSettings['options'];
+        $dbSettings = $settings['db'];
+        $dsn = $dbSettings['dsn'];
+        $username = $dbSettings['username'];
+        $passwd = $dbSettings['passwd'];
+        $options = $dbSettings['options'];
 
         $pdo = new PDO($dsn, $username, $passwd, $options);
 
