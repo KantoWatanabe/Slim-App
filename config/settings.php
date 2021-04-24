@@ -41,11 +41,4 @@ if ($environment) {
     require __DIR__ . '/env.' . $environment . '.php';
 }
 
-// CLIの場合はロガー名をコマンド名に置き換え
-if (php_sapi_name() === 'cli') {
-    $name = isset($argv[1]) ? str_replace(':', '-', $argv[1]) : 'cli';
-    $settings['settings']['logger']['name'] = $name;
-    $settings['settings']['logger']['path'] = __DIR__ . '/../tmp/logs/' . $name . '.log';
-}
-
 return $settings;
