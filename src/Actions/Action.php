@@ -149,7 +149,7 @@ abstract class Action
      */
     protected function render(string $name, array $data = [], int $statusCode = 200): Response
     {
-        $body = $this->get('view')->render('index.html.twig', $data);
+        $body = $this->get('view')->render($name, $data);
         $this->response->getBody()->write($body);
 
         return $this->response
