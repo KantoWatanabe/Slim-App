@@ -37,7 +37,7 @@ if (file_exists(__DIR__ . '/env.php')) {
 }
 
 $environment = $_SERVER['APP_ENV'] ?? $_ENV['APP_ENV'] ?? '';
-if ($environment && file_exists(__DIR__ . '/env.' . $environment . '.php')) {
+if ($environment) {
     require __DIR__ . '/env.' . $environment . '.php';
 }
 

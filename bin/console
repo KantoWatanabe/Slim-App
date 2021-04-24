@@ -2,8 +2,15 @@
 <?php
 use DI\ContainerBuilder;
 use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Input\ArgvInput;
 
 require __DIR__ . '/../vendor/autoload.php';
+
+$env = (new ArgvInput())->getParameterOption(['--env', '-e']);
+
+if ($env) {
+    $_ENV['APP_ENV'] = $env;
+}
 
 $builder = new ContainerBuilder();
 $builder->addDefinitions(require __DIR__ . '/../config/settings.php');

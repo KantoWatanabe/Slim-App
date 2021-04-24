@@ -20,7 +20,7 @@ class ExampleCommand extends Command
         $this->setDescription('This command is example')
             ->setHelp('This command is example')
             ->addArgument('name', InputArgument::OPTIONAL, 'The username of the user.', 'World')
-            ->addOption('env', 'e', InputOption::VALUE_OPTIONAL, 'The environment of the command.', 'example');
+            ->addOption('env', 'e', InputOption::VALUE_OPTIONAL, 'The environment of the command.', $this->get('settings')['environment']);
     }
 
     /**
