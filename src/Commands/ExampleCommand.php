@@ -1,54 +1,36 @@
 <?php
 namespace App\Commands;
 
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Command\LockableTrait;
-use Psr\Container\ContainerInterface;
-use Twig\Environment as Twig;
-use Monolog\Logger;
-use PDO;
+use Symfony\Component\Console\Input\InputOption;
+use App\Commands\Command;
 
 class ExampleCommand extends Command
 {
-    use LockableTrait;
-
+    /**
+     * @var string
+     */
     protected static $defaultName = 'console:example';
-
-    private ContainerInterface $container;
-    private Twig $view;
-    private Logger $logger;
-    private PDO $db;
-
-    public function __construct(ContainerInterface $container)
-    {
-        $this->container = $container;
-        $this->view = $this->container->get('view');
-        $this->logger = $this->container->get('logger');
-        $this->db = $this->container->get('database');
-
-        parent::__construct();
-    }
-
+ 
+    /**
+     * {@inheritdoc}
+     */
     protected function configure()
     {
         $this->setDescription('This command is example')
             ->setHelp('This command is example')
-            ->addArgument('username', InputArgument::OPTIONAL, 'The username of the user.');
+            ->addArgument('name', InputArgument::OPTIONAL, 'The username of the user.', 'World')
+            ->addOption('env', 'e', InputOption::VALUE_OPTIONAL, 'The environment of the command.', 'example');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    /**
+     * {@inheritdoc}
+     */
+    protected function handle(): int
     {
-        if (!$this->lock()) {
-            $output->writeln('The command is already running in another process.');
+        $this->output->writeln('Hello '.$this->arg('name'));
+        $this->output->writeln('The environment is '.$this->opt('env'));
 
-            return Command::FAILURE;
-        }
-
-        $output->writeln('Hellow '.$input->getArgument('username'));
-
-        return Command::SUCCESS;
+        return $this->success();
     }
 }
