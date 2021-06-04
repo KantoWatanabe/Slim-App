@@ -70,6 +70,6 @@ class HttpErrorHandler extends ErrorHandler
         $response = $this->responseFactory->createResponse($statusCode);
         $response->getBody()->write($payload);
 
-        return $response->withHeader('Content-Type', 'application/json');;
+        return $response->withHeader('Content-Type', 'application/json');
     }
 }
