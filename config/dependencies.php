@@ -6,6 +6,9 @@ use Monolog\Handler\RotatingFileHandler;
 use Monolog\Logger;
 use Monolog\Processor\UidProcessor;
 
+use App\Domain\User\Repositories\UserRepositoryInterface;
+use App\Infrastructure\User\UserRepository;
+
 return [
     'view' => function (ContainerInterface $container) {
         $settings = $container->get('settings');
@@ -44,4 +47,8 @@ return [
 
         return $pdo;
     },
+
+    UserRepositoryInterface::class => function (ContainerInterface $container) {
+        return $container->get(UserRepository::class);
+    }
 ];
