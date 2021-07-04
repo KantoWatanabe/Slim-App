@@ -4,8 +4,8 @@ namespace App\Domain\User\Repositories;
 
 use App\Domain\User\Models\User;
 
-interface UserRepositoryInterface {
-
+interface UserRepositoryInterface
+{
     /**
      * @return User[]
      */

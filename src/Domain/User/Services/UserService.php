@@ -6,7 +6,8 @@ use Psr\Container\ContainerInterface;
 use Monolog\Logger;
 use App\Domain\User\Repositories\UserRepositoryInterface;
 
-class UserService {
+class UserService
+{
     /**
      * @var Logger
      */

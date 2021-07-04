@@ -3,4 +3,6 @@
 phpunit.xml
 .phpunit.result.cache
 
+.php-cs-fixer.cache
+
 config/env.php

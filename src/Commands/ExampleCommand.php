@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Commands;
 
 use Symfony\Component\Console\Input\InputArgument;

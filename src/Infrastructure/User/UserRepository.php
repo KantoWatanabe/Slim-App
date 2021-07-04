@@ -7,7 +7,6 @@ use App\Domain\User\Repositories\UserRepositoryInterface;
 
 class UserRepository implements UserRepositoryInterface
 {
-
     /**
      * @var User[]
      */

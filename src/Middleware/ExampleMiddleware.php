@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Middleware;
 
 use Psr\Http\Message\ResponseInterface as Response;
@@ -29,7 +30,6 @@ class ExampleMiddleware implements Middleware
      */
     public function process(Request $request, RequestHandler $handler): Response
     {
-
         return $handler->handle($request);
     }
 }
