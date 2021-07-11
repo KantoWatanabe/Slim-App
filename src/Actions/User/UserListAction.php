@@ -5,22 +5,22 @@ namespace App\Actions\User;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Container\ContainerInterface;
 use App\Actions\Action;
-use App\Domain\User\Services\UserService;
+use App\UseCases\User\UserListUseCase;
 
-class ListUser extends Action
+class UserListAction extends Action
 {
     /**
-     * @var UserService
+     * @var UserListUseCase
      */
-    private UserService $userService;
+    private UserListUseCase $userListUseCase;
 
     /**
      * @param ContainerInterface $container
      * @param UserService $userService
      */
-    public function __construct(ContainerInterface $container, UserService $userService)
+    public function __construct(ContainerInterface $container, UserListUseCase $userListUseCase)
     {
-        $this->userService = $userService;
+        $this->userListUseCase = $userListUseCase;
         parent::__construct($container);
     }
 
@@ -29,7 +29,7 @@ class ListUser extends Action
      */
     protected function action(): Response
     {
-        $users = $this->userService->findUsers();
+        $users = $this->userListUseCase->list();
         return $this->json($users);
     }
 }

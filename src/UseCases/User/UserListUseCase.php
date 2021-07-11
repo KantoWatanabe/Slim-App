@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Domain\User\Services;
+namespace App\UseCases\User;
 
 use Psr\Container\ContainerInterface;
 use Monolog\Logger;
-use App\Domain\User\Repositories\UserRepositoryInterface;
+use App\Domain\User\UserRepositoryInterface;
 
-class UserService
+class UserListUseCase
 {
     /**
      * @var Logger
@@ -31,7 +31,7 @@ class UserService
     /**
      * @return User[]
      */
-    public function findUsers(): array
+    public function list(): array
     {
         $users = $this->userRepository->findAll();
         $this->logger->debug('users', $users);

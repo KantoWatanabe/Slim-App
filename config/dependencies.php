@@ -6,7 +6,7 @@ use Monolog\Handler\RotatingFileHandler;
 use Monolog\Logger;
 use Monolog\Processor\UidProcessor;
 
-use App\Domain\User\Repositories\UserRepositoryInterface;
+use App\Domain\User\UserRepositoryInterface;
 use App\Infrastructure\User\UserRepository;
 
 return [
