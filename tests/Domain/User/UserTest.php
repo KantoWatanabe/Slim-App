@@ -3,7 +3,7 @@
 namespace Tests\Domain\User\Models;
 
 use Tests\TestCase;
-use App\Domain\User\Models\User;
+use App\Domain\User\User;
 
 class UserTest extends TestCase
 {
