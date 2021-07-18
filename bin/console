@@ -18,8 +18,8 @@ $builder = new ContainerBuilder();
 $settings = require __DIR__ . '/../config/settings.php';
 
 $name = isset($argv[1]) ? str_replace(':', '-', $argv[1]) : 'cli';
-$settings['settings']['logger']['name'] = $name;
-$settings['settings']['logger']['path'] = __DIR__ . '/../tmp/logs/' . $name . '.log';
+$settings['logger']['name'] = $name;
+$settings['logger']['path'] = __DIR__ . '/../tmp/logs/' . $name . '.log';
 
 $builder->addDefinitions($settings);
 $builder->addDefinitions(require __DIR__ . '/../config/dependencies.php');
