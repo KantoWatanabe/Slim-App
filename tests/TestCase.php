@@ -15,13 +15,7 @@ class TestCase extends PHPUnit_TestCase
     {
         $builder = new ContainerBuilder();
 
-        $settings = require __DIR__ . '/../config/settings.php';
-        
-        $name = 'tests';
-        $settings['settings']['logger']['name'] = $name;
-        $settings['settings']['logger']['path'] = __DIR__ . '/../tmp/logs/' . $name . '.log';
-        
-        $builder->addDefinitions($settings);
+        $builder->addDefinitions(require __DIR__ . '/../config/settings.php');
         $builder->addDefinitions(require __DIR__ . '/../config/dependencies.php');
         
         $container = $builder->build();
