@@ -20,8 +20,8 @@ class UserListAction extends Action
      */
     public function __construct(ContainerInterface $container, UserListUseCase $userListUseCase)
     {
-        $this->userListUseCase = $userListUseCase;
         parent::__construct($container);
+        $this->userListUseCase = $userListUseCase;
     }
 
     /**
