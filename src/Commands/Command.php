@@ -14,6 +14,16 @@ abstract class Command extends BaseCommand
     use LockableTrait;
 
     /**
+     * @var string
+     */
+    protected $command;
+
+    /**
+     * @var string
+     */
+    protected $description;
+
+    /**
      * @var ContainerInterface
      */
     protected $container;
@@ -42,6 +52,15 @@ abstract class Command extends BaseCommand
         $this->logger = $this->get('logger');
 
         parent::__construct();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function configure()
+    {
+        $this->setName($this->command)
+            ->setDescription($this->description);
     }
 
     /**
