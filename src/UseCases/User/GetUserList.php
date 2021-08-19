@@ -6,7 +6,7 @@ use Psr\Container\ContainerInterface;
 use Monolog\Logger;
 use App\Domain\User\UserRepositoryInterface;
 
-class UserListUseCase
+class GetUserList
 {
     /**
      * @var Logger
@@ -31,7 +31,7 @@ class UserListUseCase
     /**
      * @return User[]
      */
-    public function list(): array
+    public function __invoke(): array
     {
         $users = $this->userRepository->findAll();
         $this->logger->debug('users', $users);
